@@ -1,5 +1,9 @@
 package com.example.UserService.DTO;
 
+import com.example.UserService.Enum.Role;
+import com.example.UserService.Enum.Status;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,6 +17,8 @@ public class UserResponse {
     private Long id;
     private String name;
     private String email;
-    private String role;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Role role;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }

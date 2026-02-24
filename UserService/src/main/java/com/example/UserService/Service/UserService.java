@@ -64,8 +64,8 @@ public class UserService {
         response.setId(savedUser.getId());
         response.setName(savedUser.getName());
         response.setEmail(savedUser.getEmail());
-        response.setRole(String.valueOf(savedUser.getRole()));
-        response.setStatus(String.valueOf(savedUser.getStatus()));
+        response.setRole(savedUser.getRole());
+        response.setStatus(savedUser.getStatus());
 
         return response;
     }
@@ -74,6 +74,6 @@ public class UserService {
     public boolean isUserActive(Long id) {
         User user = userRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found"));
-        return "ACTIVE".equals(user.getStatus());
+        return "ACTIVE".equalsIgnoreCase(String.valueOf(user.getStatus()));
     }
 }
